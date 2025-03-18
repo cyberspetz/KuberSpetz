@@ -20,6 +20,7 @@
     <modules>
         <module>main-app</module>
         <module>idv-microservice</module>
+        <module>account-microservice</module>
     </modules>
 
     <licenses>
@@ -39,4 +40,24 @@
         <sentry.version>8.3.0</sentry.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+        </dependency>
+
+        <!-- Add these dependencies -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+
+
+    </dependencies>
 </project>

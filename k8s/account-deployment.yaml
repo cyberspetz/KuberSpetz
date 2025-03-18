@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account-microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: account-microservice
+  template:
+    metadata:
+      labels:
+        app: account-microservice
+    spec:
+      containers:
+        - name: account-microservice
+          image: cyberspetzdocker/account-microservice:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:9092
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/mydatabase
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: postgres
+            - name: SPRING_PROFILES_ACTIVE
+              value: docker
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
